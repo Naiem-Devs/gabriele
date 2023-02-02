@@ -1,16 +1,29 @@
 /*   Theme default css */
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* ======font family=========
-
+font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif;
 */
-
+:root{
+  --white:#fff;
+  --gray:#919199;
+  --bg:#07071D;
+  --green:#55E39D;
+  --pink:#CD2EA3;
+  --gbg:linear-gradient(304.94deg, #D12EA2 19.75%, #552EAF 81.35%);
+}
 
 
 body {
-  font-weight: 400; 
-  font-size: 16px; 
+  font-family: 'Poppins', sans-serif; 
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  font-size: 18px;
+  color: var(--gray);
   margin: 0;
   padding: 0;
+  background: var(--bg);
 }
 
   
@@ -45,6 +58,8 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--white);
   margin-top: 0px; 
   font-weight: 700;
  }
@@ -95,32 +110,82 @@ li {
 .mt_150{margin-top: 150px;}
 .mt_100{margin-top: 100px;}
 .mt_50{margin-top: 50px;}
- 
+img,svg{
+  max-width: 100%;
+}
 .thm_btn{}
+.btn-check:focus+.btn, .btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+a.btn,button.btn,.btn {
+  padding: 15px 23px;
+  background: var(--gbg);
+  border-radius: 100px;
+  border: none;
+  color: var(--white);
+}
+
+a.btn:hover, button.btn:hover, .btn:hover {
+  color: var(--white);
+}
+.container{
+  max-width: 1320px;
+}
+
 
 /* default-css END 
 ================================== */
  
 
-
-.header-area {
-  padding: 30px 0; 
-  width: 100%;
-  z-index: 99; 
-  background: #ff7c47;
-}
-.menu-area nav ul li {
-  list-style: none;
-  display: inline-block;
+.header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.menu-area nav ul li a {
-  font-size: 16px;
-  display: inline-block;
-  margin-left: 60px;
-  position: relative;
+.header-left > a {
+  display: block;
+  max-width: 75px;
 }
-.menu-area{}
+
+.header-left ul {
+  display: flex;
+  align-items: center;
+}
+
+.header-left ul a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: .3s;
+  background: #0F0F24;
+  border: 2px solid #212143;
+}
+
+.header-area ul.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-area ul.menu a {
+  color: var(--white);
+  margin: 0 20px;
+}
+.header-area ul.menu li:first-child a{
+  margin-left: 0;
+}
+.header-area ul.menu li:last-child a{
+  margin-right: 0;
+}
+.header-area ul.menu a.active{
+  color: var(--pink);
+}
 
 /* humbergar */
 .bar a {
@@ -132,7 +197,7 @@ li {
 .bar a span {
   width: 100%;
   height: 3px;
-  background: #fff;
+  color: var(--white);
   display: block;
   position: relative;
   top: 17px;
@@ -150,7 +215,7 @@ li {
   position: fixed;
   width: 320px;
   height: 100vh;
-  background: #ffffff;
+  color: var(--white);
   z-index: 99;
   box-shadow: 0px 0px 9px -1px #737373;
   top: 0;
