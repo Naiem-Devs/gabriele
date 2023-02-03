@@ -7,29 +7,78 @@
   }); 
 
 
-  // owlCarousel
-  $(".brand-active").owlCarousel({
-    loop: true,
-    margin: 30,
-    items: 6,
-    navText: [
-      '<i class="fa fa-angle-left"></i>',
-      '<i class="fa fa-angle-right"></i>'
-    ],
-    nav: false,
-    dots: false,
-    responsive: {
-      0: {
-        items: 2
-      },
-      767: {
-        items: 3
-      },
-      992: {
-        items: 6
+  function CountDown() {
+    (function () {
+      const second = 1000,
+            minute = second * 60,
+            hour = minute * 60,
+            day = hour * 24;
+    
+      //I'm adding this section so I don't have to keep updating this pen every year :-)
+      //remove this if you don't need it
+      let today = new Date(),
+          dd = String(today.getDate()).padStart(2, "0"),
+          mm = String(today.getMonth() + 1).padStart(2, "0"),
+          yyyy = today.getFullYear(),
+          nextYear = yyyy + 1,
+          dayMonth = "09/30/",
+          birthday = dayMonth + yyyy;
+      
+      today = mm + "/" + dd + "/" + yyyy;
+      if (today > birthday) {
+        birthday = dayMonth + nextYear;
       }
-    }
-  });
+      //end
+      
+        const countDown = new Date(birthday).getTime(),
+          x = setInterval(function() {    
+    
+            const now = new Date().getTime(),
+                  distance = countDown - now;
+    
+            document.getElementById("days").innerText = Math.floor(distance / (day)),
+              document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+              document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+              document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+    
+            //do something later when date is reached
+            if (distance < 0) { 
+              document.getElementById("countdown").style.display = "none"; 
+              clearInterval(x);
+            }
+            //seconds
+        }, 0)
+    }());
+  }
+  CountDown()
+
+  function Animation() { 
+    AOS.init({
+      // Global settings:
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+      initClassName: 'aos-init', // class applied after initialization
+      animatedClassName: 'aos-animate', // class applied on animation
+      useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+      disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+      
+    
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 800, // values from 0 to 3000, with step 50ms
+      easing: 'ease', // default easing for AOS animations
+      once: false, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    
+    });
+  }
+  Animation()
+
+
 
  
 })(jQuery);
